@@ -1,0 +1,11 @@
+{
+    "Name": "Emergency Stop",
+    "Description": "Emergency Stop for Trains. Stops and Shutdowns your train when triggered. Needs to be soldered to work!",
+    "Amount": 20,
+    "Price": 2000,
+    "AssetBundleName": "estop",
+    "PrefabPath": "Assets/Prefabs/EStop.prefab",
+    "IconStandardPath": "Assets/Texture2D/standard.png",
+    "IconDroppedPath": "Assets/Texture2D/dropped.png",
+	"ShelfPrefabPath": "Assets/Prefabs/EStop_ShelfItem.prefab"
+}

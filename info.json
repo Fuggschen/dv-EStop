@@ -1,0 +1,13 @@
+{
+  "Id": "EStop",
+  "Version": "1.0.0",
+  "DisplayName": "Emergency Stop Gadget",
+  "Author": "Fuggschen",
+  "HomePage": "https://www.nexusmods.com/derailvalley/mods/1342",
+  "Repository": "https://raw.githubusercontent.com/Fuggschen/dv-EStop/refs/heads/master/resources/repository.json",
+  "AssemblyName": "EStop.Game.dll",
+  "EntryMethod": "EStop.Game.Main.Load",
+  "Requirements": [
+    "custom_item_mod"
+  ]
+}
