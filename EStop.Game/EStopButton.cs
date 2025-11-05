@@ -56,7 +56,6 @@ namespace EStop.Game
             if (EStopTriggered)
             {
                 TriggerEmergencyStop();
-                Main.Log($"Emergency stop triggered! Stopping train {TrainCar.ID}");
             }
         }
 
@@ -127,9 +126,13 @@ namespace EStop.Game
 
             // Trigger emergency stop
             EStopTriggered = true;
-
-            // Power off the train (outside loop to prevent buttom spam)
-            Controls.PowerOff.Move(1f);
+            Main.Log($"Emergency stop triggered! Stopping train {TrainCar.ID}");
+            
+            if (Main.settings.EngineShutdown)
+            {
+                // Power off the train (outside loop to prevent buttom spam)
+                Controls.PowerOff.Move(1f);
+            }
 
             // Start the button press animation
             StartCoroutine(AnimateButtonPress());
@@ -164,6 +167,11 @@ namespace EStop.Game
             if (Controls.Sander.Value < 1.0)
             {
                 Controls.Sander.Move(1f);
+            }
+
+            if (Main.settings.DynamicBrake && Controls.DynamicBrake.Value < 1f)
+            {
+                Controls.DynamicBrake.Move(1f);
             }
         }
 

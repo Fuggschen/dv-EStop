@@ -11,11 +11,16 @@ namespace EStop.Game;
 public static class Main
 {
     private static UnityModManager.ModEntry Instance { get; set; } = null!;
+    public static Settings settings;
 
     private static bool Load(UnityModManager.ModEntry modEntry)
     {
         Instance = modEntry;
         Harmony? harmony = null;
+        
+        settings = UnityModManager.ModSettings.Load<Settings>(modEntry);
+        modEntry.OnGUI = OnGUI;
+        modEntry.OnSaveGUI = OnSaveGUI;
 
         try
         {
@@ -32,6 +37,16 @@ public static class Main
         }
 
         return true;
+    }
+
+    private static void OnGUI(UnityModManager.ModEntry modEntry)
+    {
+        settings.Draw(modEntry);
+    }
+    
+    private static void OnSaveGUI(UnityModManager.ModEntry modEntry)
+    {
+        settings.Save(modEntry);
     }
 
     private static void RegisterGadgets()
